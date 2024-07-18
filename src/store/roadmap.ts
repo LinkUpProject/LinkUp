@@ -14,10 +14,27 @@ interface Edge {
   target: string;
   type: string;
 }
+interface DataNode {
+  id: string;
+  type: string;
+  data: {
+    name: string;
+    link?: string;
+    emoji: string;
+    isStart?: string;
+    progress?: string;
+  };
+  children?: DataNode[];
+  position?: {
+    x: number;
+    y: number;
+  };
+}
+
 
 export const roadmapStore = proxy({
   // 解析前的原始数据
-  PreanalyticData: [] as any[],
+  PreanalyticData: {} as DataNode,
   // 解析后的节点数据
   initNodes: [] as Node[],
   // 解析后的边数据

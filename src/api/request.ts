@@ -16,9 +16,21 @@ class AxiosSingleton {
 
   private static createInstance(config?: AxiosRequestConfig): AxiosInstance {
     const instance = axios.create({
-      baseURL: "/",
+      baseURL: "http://localhost:8080",
       timeout: 5000, //超时配置
       withCredentials: true, //跨域携带cookie
+      headers: {
+        // 跨域
+
+        "Access-Control-Allow-Origin": "*",
+
+        "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+
+        "Access-Control-Allow-Headers": "Content-Type,Content-Length, Authorization, Accept,X-Requested-With",
+
+        "Access-Control-Expose-Headers": "X-Total-Count",
+
+      },
       ...config, // 自定义配置覆盖基本配置
     });
 
@@ -40,8 +52,9 @@ class AxiosSingleton {
     instance.interceptors.response.use(
       function (response: AxiosResponse) {
         // 对响应数据做点什么
-        console.log("response:", response);
         const { code, data, message } = response.data;
+        console.log(response, 'full response');
+         
         if (code === 200) return data;
         else if (code === 500) {
           // errorToast(message);

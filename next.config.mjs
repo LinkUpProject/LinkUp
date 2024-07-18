@@ -1,21 +1,35 @@
-// next.config.mjs
-export default {
-  async rewrites() {
+const CORS_HEADERS = [
+  {
+    key: "Access-Control-Allow-Credentials",
+    value: "true",
+  },
+  {
+    key: "Access-Control-Allow-Origin",
+    value: "*",
+  },
+  {
+    key: "Access-Control-Allow-Methods",
+    value: "GET,DELETE,PATCH,POST,PUT",
+  },
+  {
+    key: "Access-Control-Allow-Headers",
+    value: "*",
+  },
+];
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  async headers() {
     return [
       {
-        source: '/:path*',
-        destination: 'https://linkup.zeabur.app/:path*', // 替换为你的后端API地址
+        source: "/api/:path*", // 为访问 /api/** 的请求添加 CORS HTTP Headers
+        headers: CORS_HEADERS,
+      },
+      {
+        source: "/specific", // 为特定路径的请求添加 CORS HTTP Headers,
+        headers: CORS_HEADERS,
       },
     ];
   },
-
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        fs: false,
-        module: false,
-      };
-    }
-    return config;
-  },
 };
+export default nextConfig

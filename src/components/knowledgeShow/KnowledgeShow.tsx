@@ -3,13 +3,18 @@
 import React from "react";
 // 导入数据
 import { knowledgeClassify } from "../../data/knowledgeClassify";
-import { getContent } from "../../api/content";
+import { getRoadMap } from "../../api/roadmap";
+import { roadmapStore } from "@/store/roadmap"
+import { processData } from "@/utils/roadmap"
 
 export default function KnowledgeShow() {
   const handleClick = async (link: string) => {
     try {
-      const content = await getContent(link);
-      console.log("Content fetched:", content);
+      const data = await getRoadMap(link);
+      // 更新 Valtio 状态
+      roadmapStore.PreanalyticData = data;
+      // 处理数据
+      processData(data);
       // 确保在数据处理完成后跳转
       // window.location.href = "/roadmap";
     } catch (error) {

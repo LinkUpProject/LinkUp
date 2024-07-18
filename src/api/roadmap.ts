@@ -1,8 +1,8 @@
 import { request } from "./request";
 
-export const getRoadmap = (id: string) => {
+export const getRoadMap = async (id: string): Promise<DataNode> => {
   return request({
-    url: `/roadmap/${id}`,
-    method: "GET",
+    url: `/api/roadmap/${id}`,
+    method: "get",
   });
 };
