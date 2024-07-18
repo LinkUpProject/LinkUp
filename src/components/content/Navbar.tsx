@@ -6,6 +6,7 @@ import React from "react";
 import { useSnapshot } from "valtio";
 import { contentNavbarStore } from "../../store/contentNavbar";
 import AIAnswer from "./AIAnswer";
+import Note from "./Note";
 
 export default function Navbar() {
   // 创建状态快照
@@ -13,24 +14,30 @@ export default function Navbar() {
   const { navItems, showId } = contentNavbarSnapshot;
 
   return (
-    <div className="fixed right-0 top-0 w-1/4 flex flex-col h-screen bg-[#FFFCF1] z-50">
+    <div className="fixed right-0 top-0 w-1/4 flex flex-col h-screen bg-white z-50 ">
       <ul className="mt-2 menu rounded-box">
         <li>
           <details open>
             <summary
               onClick={() => (contentNavbarStore.showId = 0)}
-              className="text-xl"
+              className="text-xl select-none"
             >
               {navItems[showId].name}
             </summary>
             <ul>
               <li>
-                <button onClick={() => (contentNavbarStore.showId = 0)}>
+                <button
+                  onClick={() => (contentNavbarStore.showId = 0)}
+                  className="select-none"
+                >
                   {navItems[0].name}
                 </button>
               </li>
               <li>
-                <button onClick={() => (contentNavbarStore.showId = 1)}>
+                <button
+                  onClick={() => (contentNavbarStore.showId = 1)}
+                  className="select-none"
+                >
                   {navItems[1].name}
                 </button>
               </li>
@@ -39,6 +46,7 @@ export default function Navbar() {
         </li>
       </ul>
       <div className="h-full">{navItems[showId].id === 0 && <AIAnswer />}</div>
+      <div className="h-full">{navItems[showId].id === 1 && <Note/>}</div>
     </div>
   );
 }

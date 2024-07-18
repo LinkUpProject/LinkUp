@@ -9,7 +9,7 @@ export default function page() {
       <div className="w-3/4 min-h-screen">
         <Content />
       </div>
-      <div className="w-1/4 min-h-screen bg-[#FFFCF1]">
+      <div className="w-1/4 min-h-screen">
         <Navbar />
       </div>
     </div>

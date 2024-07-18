@@ -8,6 +8,8 @@ import dayjs from "dayjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import ScrollHighLight from "../scrollHighLight/ScrollHighLight";
+import { Link } from "@nextui-org/react";
+import { AnchorIcon } from "@/externalLink/AnchorIcon";
 
 export default function Content() {
   const router = useRouter();
@@ -108,6 +110,16 @@ export default function Content() {
             {data.content}
           </ReactMarkdown>
         </ScrollHighLight>
+        <span className="ml-4 mt-4">原文链接及扩展：</span>
+        <Link
+          isExternal
+          showAnchorIcon
+          href={data.resource}
+          className="mt-2 ml-2 text-purple-500"
+          anchorIcon={<AnchorIcon />}
+        >
+          {data.title}
+        </Link>
       </div>
     </div>
   );
