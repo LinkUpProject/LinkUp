@@ -1,6 +1,8 @@
-// Select.tsx
+// 选择组件
 
+// 导入React
 import React from "react";
+// 导入全局状态管理
 import { tourAnswerStore } from "../../store/tourAnswer";
 
 interface QuestionData {

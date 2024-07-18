@@ -1,5 +1,8 @@
 // 内容页面
+
+// 导入React
 import React from "react";
+// 导入组件
 import Content from "@/components/content/Content";
 import Navbar from "@/components/content/Navbar";
 import { Suspense } from "react";

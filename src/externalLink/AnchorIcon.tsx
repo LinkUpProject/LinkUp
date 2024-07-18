@@ -1,4 +1,8 @@
+// 图标组件
+
+// 导入React
 import React from "react";
+
 export const AnchorIcon = (props: any) => (
   <svg
     aria-hidden="true"

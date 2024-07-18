@@ -1,44 +1,47 @@
-import React from 'react';
+// 编辑器组件
 
-import type { PlateContentProps } from '@udecode/plate-common';
-import type { VariantProps } from 'class-variance-authority';
-
-import { cn } from '@udecode/cn';
-import { PlateContent } from '@udecode/plate-common';
-import { cva } from 'class-variance-authority';
+// 导入React
+import React from "react";
+// 导入类型注释
+import type { PlateContentProps } from "@udecode/plate-common";
+import type { VariantProps } from "class-variance-authority";
+// 导入第三方库
+import { cn } from "@udecode/cn";
+import { PlateContent } from "@udecode/plate-common";
+import { cva } from "class-variance-authority";
 
 const editorVariants = cva(
   cn(
-    'relative overflow-x-auto whitespace-pre-wrap break-words',
-    'min-h-[500px] max-h-[550px] w-full rounded-md bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none',
-    '[&_[data-slate-placeholder]]:text-muted-foreground [&_[data-slate-placeholder]]:!opacity-100',
-    '[&_[data-slate-placeholder]]:top-[auto_!important]',
-    '[&_strong]:font-bold'
+    "relative overflow-x-auto whitespace-pre-wrap break-words",
+    "min-h-[500px] max-h-[550px] w-full rounded-md bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none",
+    "[&_[data-slate-placeholder]]:text-muted-foreground [&_[data-slate-placeholder]]:!opacity-100",
+    "[&_[data-slate-placeholder]]:top-[auto_!important]",
+    "[&_strong]:font-bold"
   ),
   {
     defaultVariants: {
       focusRing: true,
-      size: 'sm',
-      variant: 'outline',
+      size: "sm",
+      variant: "outline",
     },
     variants: {
       disabled: {
-        true: 'cursor-not-allowed opacity-50',
+        true: "cursor-not-allowed opacity-50",
       },
       focusRing: {
-        false: '',
-        true: 'ring-ring ring-slate-900',
+        false: "",
+        true: "ring-ring ring-slate-900",
       },
       focused: {
-        true: 'outline-2',
+        true: "outline-2",
       },
       size: {
-        md: 'text-base',
-        sm: 'text-sm',
+        md: "text-base",
+        sm: "text-sm",
       },
       variant: {
-        ghost: '',
-        outline: 'border border-input',
+        ghost: "",
+        outline: "border border-input",
       },
     },
   }
@@ -83,6 +86,6 @@ const Editor = React.forwardRef<HTMLDivElement, EditorProps>(
     );
   }
 );
-Editor.displayName = 'Editor';
+Editor.displayName = "Editor";
 
 export { Editor };

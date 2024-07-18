@@ -2,11 +2,11 @@
 
 // 导入React
 import React from "react";
-import { ImageList } from "./ImageList";
+// 导入第三方库
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import Editor from "@/components/Editor";
-import { ImageProvider } from "@/context/ImageContext"
+import { ImageProvider } from "@/context/ImageContext";
 const imageListVariants = cva(cn("px-3 mt-2"), {
   variants: {
     bottomWithTags: {
@@ -20,11 +20,6 @@ export default function Note() {
     <ImageProvider>
       <div className="h-screen">
         <Editor />
-        {/* <ImageList className={imageListVariants()} /> */}
-        {/* <textarea
-          className="textarea textarea-bordered"
-          placeholder="Bio"
-        ></textarea> */}
       </div>
     </ImageProvider>
   );

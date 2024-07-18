@@ -1,5 +1,7 @@
 "use client";
+// 导入React
 import React, { useState } from "react";
+// 导入第三方组件
 import ClassifyHome from "@/components/classifyTour/ClassifyHome";
 
 export default function page() {

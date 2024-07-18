@@ -1,9 +1,14 @@
 "use client";
+// 引导页面
+
+// 导入框架
 import Layout from "../../layout";
+// 导入组件
 import Slogan from "../../../components/tour/Slogan";
 import Select from "../../../components/tour/Select";
 import FooterButtons from "../../../components/tour/FooterButton";
 import FooterSlogan from "../../../components/tour/FooterSlogan";
+// 导入数据
 import { tourQuestions } from "../../../data/tourQuestion";
 
 const mapping: { [key: string]: number } = {

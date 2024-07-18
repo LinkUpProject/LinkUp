@@ -1,4 +1,4 @@
-// 全部分类数据
+// 全部分类状态
 
 import { proxy } from "valtio";
 

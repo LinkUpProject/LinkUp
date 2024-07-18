@@ -1,6 +1,9 @@
 "use client";
+// 内容组件
 
+// 导入React
 import React, { useState, useEffect } from "react";
+// 导入第三方库
 import { useSearchParams } from "next/navigation";
 import { getContent } from "../../api/content";
 import { useRouter } from "next/navigation";

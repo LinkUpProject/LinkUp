@@ -1,6 +1,6 @@
 // Footer Slogan 组件
 
-// 导入数据
+// 导入React
 import React from "react";
 
 interface QuestionData {

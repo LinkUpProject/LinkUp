@@ -1,6 +1,9 @@
+// Roadmap 渲染组件
 "use client";
 
-// Import third-party libraries
+// 导入React
+import { useEffect, useState } from "react";
+// 导入第三方库
 import {
   ReactFlow,
   Background,
@@ -10,37 +13,35 @@ import {
   MiniMap,
   Controls,
 } from "@xyflow/react";
-// Import styles
-import "@xyflow/react/dist/style.css";
-// Import components
-import CustomNode from "./CustomNode";
-// Import global state management
-import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { getRoadMap } from "../../api/roadmap";
 import { processData } from "../../utils/roadmap";
+// 导入样式
+import "@xyflow/react/dist/style.css";
+// 导入组件
+import CustomNode from "./CustomNode";
 
-// Define node types
+// 定义节点类型
 const nodeTypes = {
   custom: CustomNode,
 };
 
+// 主组件
 export default function RoadmapComp() {
-  // Get the parameter id
   const params = useSearchParams();
   const id = params.get("id");
 
   const [initNodes, setInitNodes] = useState<any>([]);
   const [initEdges, setInitEdges] = useState<any>([]);
 
-  // Use useNodesState and useEdgesState to manage nodes and edges state
   const [nodes, setNodes, onNodesChange] = useNodesState(initNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initEdges);
 
+  // 获取数据并初始化节点和边
   useEffect(() => {
     const fetchData = async () => {
       const data = await getRoadMap(id ?? "");
-      // Process the data
+
       const { initNodes, initEdges } = processData(data);
       setInitNodes(initNodes);
       setInitEdges(initEdges);
@@ -51,6 +52,7 @@ export default function RoadmapComp() {
     }
   }, [id]);
 
+  // 更新节点和边
   useEffect(() => {
     setNodes(initNodes);
     setEdges(initEdges);
@@ -59,7 +61,6 @@ export default function RoadmapComp() {
   console.log("initNodes", initNodes);
   console.log("initEdges", initEdges);
 
-  // Render the ReactFlow component
   return (
     <>
       {initNodes.length > 0 && initEdges.length > 0 && (

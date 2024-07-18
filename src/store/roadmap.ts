@@ -1,3 +1,5 @@
+// roadmap 状态
+
 import { proxy } from "valtio";
 
 // 定义节点和边的类型
@@ -30,7 +32,6 @@ interface DataNode {
     y: number;
   };
 }
-
 
 export const roadmapStore = proxy({
   // 解析前的原始数据

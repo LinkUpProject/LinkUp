@@ -1,4 +1,7 @@
+// 生成 RoadMap 数据函数
 
+// 导入第三方库
+import { MarkerType } from "@xyflow/react";
 
 export function processData(data: any) {
   function calculatePositions(node: any, x = 0, y = 0, level = 0) {
@@ -77,6 +80,7 @@ export function processData(data: any) {
     animated: boolean;
   };
 
+  // 创建边的递归函数
   function createEdges(node: Node, result: Edge[] = []): Edge[] {
     if (node.children) {
       node.children.forEach((child: Node) => {
@@ -87,7 +91,8 @@ export function processData(data: any) {
             source: node.id,
             target: child.id,
             markerEnd: {
-              type: "ArrowClosed",
+              type:
+                data.type === "ArrowClosed" ? MarkerType.ArrowClosed : "arrow",
               width: 20,
               height: 20,
               color: "#ff7c7c",
@@ -103,8 +108,8 @@ export function processData(data: any) {
 
   const edges = createEdges(data);
   console.log("Created edges:", edges);
-  const initNodes = nodes
-  const initEdges = edges
+  const initNodes = nodes;
+  const initEdges = edges;
 
   return { initNodes, initEdges };
 }

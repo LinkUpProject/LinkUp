@@ -1,4 +1,5 @@
 "use client";
+// AI 答疑
 import React from "react";
 
 export default function AIAnswer() {

@@ -1,3 +1,5 @@
+// mock 用户数据
+
 export const mockPersonal = {
   name: "绝不秃头",
   avatar: "",

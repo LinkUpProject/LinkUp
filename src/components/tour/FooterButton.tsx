@@ -1,5 +1,6 @@
-// FooterButtons.tsx
+// 底部按钮组件
 
+// 导入React
 import React from "react";
 
 interface FooterButtonsProps {
