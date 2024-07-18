@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import dayjs from "dayjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import ScrollHighLight from "../scrollHighLight/ScrollHighLight";
 
 export default function Content() {
   const router = useRouter();
@@ -74,7 +75,7 @@ export default function Content() {
   };
   return (
     <div className="flex flex-col  h-fit min-h-screen px-20">
-      <div className="fixed top-0 inset-x-0 flex justify-between items-center w-3/4 px-10 pt-2 pb-1 h-fit rounded-xl bg-white/70 backdrop-blur-lg backdrop-saturate-150">
+      <div className="fixed top-0 inset-x-0 flex justify-between items-center w-3/4 px-10 pt-2 pb-1 h-fit rounded-xl bg-white/70 backdrop-blur-lg backdrop-saturate-150 z-50">
         <div className="flex gap-10 mt-2">
           <button className="" onClick={() => handleClick()}>
             <img src="/svg/fanhui.svg" alt="back" className="w-6" />
@@ -102,9 +103,11 @@ export default function Content() {
         </div>
       </div>
       <div className="leading-relaxed tracking-wider text-xl pt-32 pb-20 px-10">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {data.content}
-        </ReactMarkdown>
+        <ScrollHighLight>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {data.content}
+          </ReactMarkdown>
+        </ScrollHighLight>
       </div>
     </div>
   );

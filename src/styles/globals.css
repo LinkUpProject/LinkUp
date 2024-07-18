@@ -134,3 +134,21 @@ li {
   margin-top: 6px !important;
   margin-bottom: 6px !important;
 }
+
+.highlight-box {
+  position: absolute;
+  width: 4px;
+  background-color: rgb(19, 124, 203);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  left: -10px; /* Adjust as necessary */
+}
+
+.relative {
+  position: relative;
+}
+
+.prose {
+  position: relative;
+  padding-left: 20px; /* Adjust for highlight box space */
+}
