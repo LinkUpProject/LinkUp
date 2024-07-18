@@ -5,7 +5,8 @@ import React from "react";
 import { ImageList } from "./ImageList";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-
+import Editor from "@/components/Editor";
+import { ImageProvider } from "@/context/ImageContext"
 const imageListVariants = cva(cn("px-3 mt-2"), {
   variants: {
     bottomWithTags: {
@@ -16,12 +17,15 @@ const imageListVariants = cva(cn("px-3 mt-2"), {
 });
 export default function Note() {
   return (
-    <div className="h-screen bg-red-300">
-      <ImageList className={imageListVariants()} />
-      <textarea
-        className="textarea textarea-bordered"
-        placeholder="Bio"
-      ></textarea>
-    </div>
+    <ImageProvider>
+      <div className="h-screen">
+        <Editor />
+        <ImageList className={imageListVariants()} />
+        {/* <textarea
+          className="textarea textarea-bordered"
+          placeholder="Bio"
+        ></textarea> */}
+      </div>
+    </ImageProvider>
   );
 }
