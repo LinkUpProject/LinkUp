@@ -2,6 +2,7 @@
 export const tourQuestions = [
   {
     id: 1,
+    sort: "1 / 4",
     question:
       "你是否认为大学毕业之后，只有考公考研就业创业以及留学这几个选择？🎓你是否觉得，大学毕业后的路，只有考公务员、考研、找工作、创业，或是出国深造这几条？💭",
     description:
@@ -9,17 +10,20 @@ export const tourQuestions = [
   },
   {
     id: 2,
+    sort: "2 / 4",
     question: "💭你是否怀疑，就算尝试别的路径，生活还是老样子？",
     description:
       "🌈别担心，每一步都藏着惊喜！🎉💪你的故事，由你自己书写，精彩纷呈！📖",
   },
   {
     id: 3,
+    sort: "3 / 4",
     question: "😱面对未知的未来，你是不是有点小紧张？",
     description: "🌈勇敢一点，未来属于那些敢于梦想的人！🌟",
   },
   {
     id: 4,
+    sort: "4 / 4",
     question: "🤔有时候，你是不是觉得，无论怎么努力，生活都没有变化？",
     description: "💪只要你不放弃，奇迹就会发生！✨",
   },

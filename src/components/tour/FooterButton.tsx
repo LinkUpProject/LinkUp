@@ -15,9 +15,12 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({
     const previousPath = `/tour/${["one", "two", "three", "four"][index - 1]}`;
     window.location.href = previousPath;
   };
-
+  const handleClick = () => {
+    const nextPath = `/classifytour`;
+    window.location.href = nextPath;
+  };
   return (
-    <div className="mt-10 flex justify-center space-x-4">
+    <div className="mt-4 flex justify-center space-x-4">
       {index > 0 && (
         <button
           onClick={handlePrevious}
@@ -27,8 +30,11 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({
         </button>
       )}
       {index === totalQuestions - 1 ? (
-        <button className="px-4 py-2 bg-green-500 text-white rounded">
-          完成
+        <button
+          onClick={handleClick}
+          className="px-4 py-2 bg-green-500 text-white rounded"
+        >
+          选择分类
         </button>
       ) : null}
     </div>
