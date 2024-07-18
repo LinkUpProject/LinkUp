@@ -29,7 +29,6 @@ class AxiosSingleton {
         "Access-Control-Allow-Headers": "Content-Type,Content-Length, Authorization, Accept,X-Requested-With",
 
         "Access-Control-Expose-Headers": "X-Total-Count",
-
       },
       ...config, // 自定义配置覆盖基本配置
     });
