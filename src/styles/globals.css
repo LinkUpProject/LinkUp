@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 常在下划线 */
+@layer components {
+  .text-stay {
+    @apply bg-gradient-to-r from-[#ff0f77] to-[#ff0f77] bg-no-repeat bg-left-bottom transition-[background-size] duration-[1000ms] ease-in-out transform-gpu bg-[length:100%_30%];
+  }
+}
+
+/* hover下划线 */
+@layer components {
+  .text-hover {
+    @apply bg-gradient-to-r from-[#ff0f77] to-[#ff0f77] bg-no-repeat bg-[length:0px_30%] bg-left-bottom transition-[background-size] duration-[1000ms] ease-in-out transform-gpu hover:bg-[length:100%_30%];
+  }
+}
+/* Navbar下划线 - 绿色条 */
+@layer components {
+  .border-green {
+    @apply relative;
+
+    &::after {
+      content: "";
+      @apply absolute left-1/2 bottom-0 w-[100%] h-[4px]; /* h-1 表示边框高度，可以根据需要调整 */
+      transform: translateX(-50%);
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 60) 0%,
+        rgb(132, 204, 22) 50%,
+        rgba(255, 255, 255, 60) 100%
+      );
+    }
+  }
+}
+/* Navbar下划线 - 黄色条 */
+@layer components {
+  .border-yellow {
+    @apply relative;
+
+    &::after {
+      content: "";
+      @apply absolute left-1/2 bottom-0 w-[100%] h-[4px]; /* h-1 表示边框高度，可以根据需要调整 */
+      transform: translateX(-50%);
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 60) 0%,
+        rgb(250, 204, 21) 50%,
+        rgb(250, 204, 21) 100%
+      );
+    }
+  }
+}
+/* 评价卡片高亮样式 */
+@layer components {
+  .highlight {
+    @apply bg-emerald-100 text-emerald-700 mx-1  px-1 py-0.5 rounded-md;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+/* user-select: none; */
+body {
+  background-color: white;
+  font-family: "LXGW Bright GB";
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+li {
+  list-style-type: none;
+}
+
+/* 防止Json数据中的Pre不换行，代码块样式 */
+.article pre {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  overflow-x: auto;
+}
+
+.article code {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  overflow-x: auto;
+  user-select: text;
+}
+.article p {
+  font-size: 20px !important;
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+}
+.article li {
+  font-size: 20px !important;
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+}
+/* 定义 h1 至 h5 标签的字号大小 */
+.article h1 {
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+}
+.article h2 {
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+}
+.article h3 {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+}
+.article h4 {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+}
+
+/* 定义 hr 标签的上下外边距 */
+.article hr {
+  margin-top: 6px !important;
+  margin-bottom: 6px !important;
+}
