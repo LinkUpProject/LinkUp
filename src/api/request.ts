@@ -16,7 +16,7 @@ class AxiosSingleton {
 
   private static createInstance(config?: AxiosRequestConfig): AxiosInstance {
     const instance = axios.create({
-      baseURL: "http://localhost:8080",
+      baseURL: "https://linkup.zeabur.app",
       timeout: 5000, //超时配置
       withCredentials: true, //跨域携带cookie
       headers: {
