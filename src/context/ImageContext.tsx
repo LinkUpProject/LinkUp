@@ -72,7 +72,7 @@ export const ImageProvider = ({ children }: { children: ReactNode }) => {
     try {
       const response: string[] = await request.request({
         method: "POST",
-        url: "/common/upload",
+        url: "/api/common/upload",
         headers: {
           "Content-Type": "multipart/form-data",
         },

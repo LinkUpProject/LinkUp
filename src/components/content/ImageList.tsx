@@ -29,7 +29,6 @@ export const ImageList: React.FC<ImageUploadProps> = ({ className }) => {
       <div {...getRootProps()} className='w-screen'>
         <input {...getInputProps()} />
         {/* <p>拖拽图片到这里，或点击上传</p> */}
-        {images.length > 0 && (
           <div className='flex flex-row gap-3'>
             <PhotoProvider
               overlayRender={props => (
@@ -71,7 +70,6 @@ export const ImageList: React.FC<ImageUploadProps> = ({ className }) => {
               <Icons.add className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' />
             </div>
           </div>
-        )}
       </div>
     </div>
   )

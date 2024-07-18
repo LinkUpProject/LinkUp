@@ -20,7 +20,7 @@ export default function Note() {
     <ImageProvider>
       <div className="h-screen">
         <Editor />
-        <ImageList className={imageListVariants()} />
+        {/* <ImageList className={imageListVariants()} /> */}
         {/* <textarea
           className="textarea textarea-bordered"
           placeholder="Bio"
