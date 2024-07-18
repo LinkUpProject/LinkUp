@@ -14,39 +14,29 @@ export default function Navbar() {
   const { navItems, showId } = contentNavbarSnapshot;
 
   return (
-    <div className="fixed right-0 top-0 w-1/4 flex flex-col h-screen bg-white z-50 ">
-      <ul className="mt-2 menu rounded-box">
-        <li>
-          <details open>
-            <summary
-              onClick={() => (contentNavbarStore.showId = 0)}
-              className="text-xl select-none"
-            >
-              {navItems[showId].name}
-            </summary>
-            <ul>
-              <li>
-                <button
-                  onClick={() => (contentNavbarStore.showId = 0)}
-                  className="select-none"
-                >
-                  {navItems[0].name}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => (contentNavbarStore.showId = 1)}
-                  className="select-none"
-                >
-                  {navItems[1].name}
-                </button>
-              </li>
-            </ul>
-          </details>
-        </li>
-      </ul>
+    <div className="fixed right-0 top-0 w-1/4 mt-4 flex flex-col h-screen bg-white z-50 ">
+      <span className="isolate inline-flex w-fit rounded-xl shadow-sm mb-2">
+        <button
+          type="button"
+          onClick={() => (contentNavbarStore.showId = 0)}
+          className={`inline-flex items-center rounded-l-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10 ${
+            showId === 0 && "text-yellow-600"
+          }`}
+        >
+          {navItems[0].name}
+        </button>
+        <button
+          type="button"
+          onClick={() => (contentNavbarStore.showId = 1)}
+          className={`inline-flex items-center rounded-r-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10 ${
+            showId === 1 && "text-yellow-600"
+          }`}
+        >
+          {navItems[1].name}
+        </button>
+      </span>
       <div className="h-full">{navItems[showId].id === 0 && <AIAnswer />}</div>
-      <div className="h-full">{navItems[showId].id === 1 && <Note/>}</div>
+      <div className="h-full">{navItems[showId].id === 1 && <Note />}</div>
     </div>
   );
 }
