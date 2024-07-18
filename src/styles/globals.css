@@ -2,135 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 常在下划线 */
-@layer components {
-  .text-stay {
-    @apply bg-gradient-to-r from-[#ff0f77] to-[#ff0f77] bg-no-repeat bg-left-bottom transition-[background-size] duration-[1000ms] ease-in-out transform-gpu bg-[length:100%_30%];
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 }
 
-/* hover下划线 */
-@layer components {
-  .text-hover {
-    @apply bg-gradient-to-r from-[#ff0f77] to-[#ff0f77] bg-no-repeat bg-[length:0px_30%] bg-left-bottom transition-[background-size] duration-[1000ms] ease-in-out transform-gpu hover:bg-[length:100%_30%];
+@layer base {
+  * {
+    @apply border-border;
   }
-}
-/* Navbar下划线 - 绿色条 */
-@layer components {
-  .border-green {
-    @apply relative;
-
-    &::after {
-      content: "";
-      @apply absolute left-1/2 bottom-0 w-[100%] h-[4px]; /* h-1 表示边框高度，可以根据需要调整 */
-      transform: translateX(-50%);
-      background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 60) 0%,
-        rgb(132, 204, 22) 50%,
-        rgba(255, 255, 255, 60) 100%
-      );
-    }
+  body {
+    @apply bg-background text-foreground;
   }
-}
-/* Navbar下划线 - 黄色条 */
-@layer components {
-  .border-yellow {
-    @apply relative;
-
-    &::after {
-      content: "";
-      @apply absolute left-1/2 bottom-0 w-[100%] h-[4px]; /* h-1 表示边框高度，可以根据需要调整 */
-      transform: translateX(-50%);
-      background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 60) 0%,
-        rgb(250, 204, 21) 50%,
-        rgb(250, 204, 21) 100%
-      );
-    }
-  }
-}
-/* 评价卡片高亮样式 */
-@layer components {
-  .highlight {
-    @apply bg-emerald-100 text-emerald-700 mx-1  px-1 py-0.5 rounded-md;
-  }
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  user-select: none;
-}
-/* user-select: none; */
-body {
-  background-color: white;
-  font-family: "LXGW Bright GB";
-}
-a {
-  text-decoration: none;
-  color: inherit;
-}
-li {
-  list-style-type: none;
-}
-
-/* 防止Json数据中的Pre不换行，代码块样式 */
-.article pre {
-  width: 100%;
-  max-width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 10px;
-  overflow-x: auto;
-}
-
-.article code {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  overflow-x: auto;
-  user-select: text;
-}
-.article p {
-  font-size: 20px !important;
-  margin-top: 8px !important;
-  margin-bottom: 8px !important;
-}
-.article li {
-  font-size: 20px !important;
-  margin-top: 8px !important;
-  margin-bottom: 8px !important;
-}
-/* 定义 h1 至 h5 标签的字号大小 */
-.article h1 {
-  font-size: 36px !important;
-  font-weight: 700 !important;
-  margin-top: 8px !important;
-  margin-bottom: 8px !important;
-}
-.article h2 {
-  font-size: 32px !important;
-  font-weight: 700 !important;
-  margin-top: 8px !important;
-  margin-bottom: 8px !important;
-}
-.article h3 {
-  font-size: 24px !important;
-  font-weight: 700 !important;
-  margin-top: 8px !important;
-  margin-bottom: 8px !important;
-}
-.article h4 {
-  font-size: 20px !important;
-  font-weight: 700 !important;
-  margin-top: 8px !important;
-  margin-bottom: 8px !important;
-}
-
-/* 定义 hr 标签的上下外边距 */
-.article hr {
-  margin-top: 6px !important;
-  margin-bottom: 6px !important;
 }
