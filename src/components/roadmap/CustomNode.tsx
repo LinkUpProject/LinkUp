@@ -9,11 +9,13 @@
 import React, { memo } from "react";
 // 导入第三方库
 import { Handle, Position } from "@xyflow/react";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 // 定义节点数据的类型
 
 interface NodeData {
-  link: string;
+  contentId: string;
   emoji: string;
   name: string;
   isStart: string;
@@ -21,6 +23,18 @@ interface NodeData {
 }
 
 const CustomNode: React.FC<{ data: NodeData }> = ({ data }) => {
+  const router = useRouter();
+    const params = useSearchParams();
+  // 携带id跳转
+  const handleClick = async (link: string) => {
+    try {
+      const id = params.get("id");
+      router.push(`/content?id=${link}&roadmap=${id}`);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   const progressValue = parseInt(data.progress || "0", 10);
   const progressWidth = data.isStart ? progressValue : 0;
   const progressClass =
@@ -41,7 +55,10 @@ const CustomNode: React.FC<{ data: NodeData }> = ({ data }) => {
         </div>
       )}
       {/* 添加节点链接 */}
-      <a href={data.link} className="flex justify-center items-center">
+      <button
+        onClick={() => handleClick(data.contentId)}
+        className="flex justify-center items-center"
+      >
         {/* 添加节点图标 */}
         <div className="rounded-full w-12 h-12 flex justify-center items-center border border-gray-100">
           {data.emoji}
@@ -50,7 +67,7 @@ const CustomNode: React.FC<{ data: NodeData }> = ({ data }) => {
         <div className="min-w-[140px] max-w-[140px] ml-2">
           <div className="text-xl truncate">{data.name}</div>
         </div>
-      </a>
+      </button>
       {/* 添加节点的输入和输出端口 */}
       <Handle
         type="target"

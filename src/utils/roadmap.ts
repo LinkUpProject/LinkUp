@@ -1,4 +1,4 @@
-import { roadmapStore } from "../store/roadmap";
+
 
 export function processData(data: any) {
   function calculatePositions(node: any, x = 0, y = 0, level = 0) {
@@ -103,10 +103,8 @@ export function processData(data: any) {
 
   const edges = createEdges(data);
   console.log("Created edges:", edges);
+  const initNodes = nodes
+  const initEdges = edges
 
-  roadmapStore.initNodes = nodes;
-  roadmapStore.initEdges = edges;
-
-  console.log("Nodes:", JSON.stringify(nodes, null, 2));
-  console.log("Edges:", JSON.stringify(edges, null, 2));
+  return { initNodes, initEdges };
 }

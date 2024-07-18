@@ -1,6 +1,6 @@
 "use client";
 
-// 导入第三方库
+// Import third-party libraries
 import {
   ReactFlow,
   Background,
@@ -10,46 +10,73 @@ import {
   MiniMap,
   Controls,
 } from "@xyflow/react";
-// 导入样式
+// Import styles
 import "@xyflow/react/dist/style.css";
-// 导入组件
+// Import components
 import CustomNode from "./CustomNode";
-// 导入全局状态管理
-import { useSnapshot } from "valtio";
-import { roadmapStore } from "../../store/roadmap";
+// Import global state management
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { getRoadMap } from "../../api/roadmap";
+import { processData } from "../../utils/roadmap";
 
-// 定义节点类型
+// Define node types
 const nodeTypes = {
   custom: CustomNode,
 };
 
 export default function RoadmapComp() {
-  const roadmapSnapshot = useSnapshot(roadmapStore);
+  // Get the parameter id
+  const params = useSearchParams();
+  const id = params.get("id");
 
-  // 将只读数组转换为可变数组
-  const initNodes = roadmapSnapshot.initNodes.slice();
-  const initEdges = roadmapSnapshot.initEdges.slice();
+  const [initNodes, setInitNodes] = useState<any>([]);
+  const [initEdges, setInitEdges] = useState<any>([]);
 
-  // 使用 useNodesState 和 useEdgesState 管理节点和边的状态
+  // Use useNodesState and useEdgesState to manage nodes and edges state
   const [nodes, setNodes, onNodesChange] = useNodesState(initNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initEdges);
 
-  // 渲染 ReactFlow 组件
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getRoadMap(id ?? "");
+      // Process the data
+      const { initNodes, initEdges } = processData(data);
+      setInitNodes(initNodes);
+      setInitEdges(initEdges);
+    };
+
+    if (id) {
+      fetchData();
+    }
+  }, [id]);
+
+  useEffect(() => {
+    setNodes(initNodes);
+    setEdges(initEdges);
+  }, [initNodes, initEdges, setNodes, setEdges]);
+
+  console.log("initNodes", initNodes);
+  console.log("initEdges", initEdges);
+
+  // Render the ReactFlow component
   return (
-    <ReactFlow
-      nodes={nodes}
-      edges={edges}
-      nodesDraggable={false}
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
-      nodeTypes={nodeTypes}
-      fitView
-    >
-      {/* 右下角小地图 组件 */}
-      <MiniMap />
-      {/* 左下角控制栏 组件 */}
-      <Controls showInteractive={false} />
-      <Background gap={12} size={1} />
-    </ReactFlow>
+    <>
+      {initNodes.length > 0 && initEdges.length > 0 && (
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          nodesDraggable={false}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          nodeTypes={nodeTypes}
+          fitView
+        >
+          <MiniMap />
+          <Controls showInteractive={false} />
+          <Background gap={12} size={1} />
+        </ReactFlow>
+      )}
+    </>
   );
 }

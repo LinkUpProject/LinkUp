@@ -3,20 +3,14 @@
 import React from "react";
 // 导入数据
 import { knowledgeClassify } from "../../data/knowledgeClassify";
-import { getRoadMap } from "../../api/roadmap";
-import { roadmapStore } from "@/store/roadmap"
-import { processData } from "@/utils/roadmap"
+import { useRouter } from "next/navigation";
 
 export default function KnowledgeShow() {
+  const router = useRouter();
+  // 携带id跳转
   const handleClick = async (link: string) => {
     try {
-      const data = await getRoadMap(link);
-      // 更新 Valtio 状态
-      roadmapStore.PreanalyticData = data;
-      // 处理数据
-      processData(data);
-      // 确保在数据处理完成后跳转
-      // window.location.href = "/roadmap";
+      router.push(`/roadmap?id=${link}`);
     } catch (error) {
       console.error("Error:", error);
     }

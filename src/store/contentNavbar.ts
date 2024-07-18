@@ -4,11 +4,11 @@ import { proxy } from "valtio";
 
 export const contentNavbarStore = proxy({
   navItems: [
-    { id: "1", name: "AI答疑" },
-    { id: "2", name: "笔记" },
+    { id: 0, name: "AI答疑助手" },
+    { id: 1, name: "专属笔记" },
   ],
-  showId: "1",
-  setShowId: (id: string) => {
+  showId: 0,
+  setShowId: (id: number) => {
     contentNavbarStore.showId = id;
   },
 });

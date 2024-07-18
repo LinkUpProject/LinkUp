@@ -1,3 +1,8 @@
 import { request } from "./request";
 
-export const getContent = (id: string) => request.get(`/api/content/${id}`);
+export const getContent = async (id: string) => {
+  return request({
+    url: `/api/content/${id}`,
+    method: "get",
+  });
+};
